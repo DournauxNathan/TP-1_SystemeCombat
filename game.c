@@ -21,6 +21,10 @@ int main()
 		vieMonstre = vieMonstre - degat;
 
 		printf("PV du monstre: %d \n \n", vieMonstre);
+
+		printf("Le monstre contre-attque ! \n");
+
+		vie = vie - degat;
 	}
 
 	return 0;
