@@ -10,15 +10,18 @@ int main()
 	float degat;
 	degat = 5;
 
-	printf("Vous: %d \n", vie);
 
-	printf("Monstre: %d \n \n", vieMonstre);
+	while(vieMonstre >= 0 || vie >= 0)
+		printf("Vous: %d \n", vie);
 
-	printf("Vous attaquez le monstre ! \n");
+		printf("Monstre: %d \n \n", vieMonstre);
 
-	vieMonstre = vieMonstre - degat;
+		printf("Vous attaquez le monstre ! \n");
 
-	printf("PV du monstre: %d \n \n", vieMonstre);
-	
+		vieMonstre = vieMonstre - degat;
+
+		printf("PV du monstre: %d \n \n", vieMonstre);
+	}
+
 	return 0;
 }
