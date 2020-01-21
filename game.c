@@ -10,21 +10,35 @@ int main()
 	float degat;
 	degat = 5;
 
+	printf("\n");
+	printf("Un monstre sauvage apparait ! \n \n");
 
 	while(vieMonstre >= 0 || vie >= 0)
 		printf("Vous: %d \n", vie);
 
 		printf("Monstre: %d \n \n", vieMonstre);
 
-		printf("Vous attaquez le monstre ! \n");
+		//Action du joueur
+		printf("Attaquer [1] ou Se defendre [2]");
 
-		vieMonstre = vieMonstre - degat;
+		scanf("%d", &choix);
+		printf("\n");
 
-		printf("PV du monstre: %d \n \n", vieMonstre);
+		switch (choix)
+		{
+			case 1 :
+				printf("Vous attaquez le monstre ! \n");
+				vieMonstre = vieMonstre - degat;
+				printf("PV du monstre: %d \n \n", vieMonstre);
+			break;
 
-		printf("Le monstre contre-attque ! \n");
-
-		vie = vie - degat;
+			case 2 :
+				printf("Vous vous defendez ! \n \n");
+				degat = degat / 4;
+				vie = vie - degat;
+				printf("Vous venez de perdre %df points de vie \n \n", degat);
+			break;
+		}
 	}
 
 	return 0;
