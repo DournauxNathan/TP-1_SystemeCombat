@@ -12,7 +12,7 @@ int main()
 
 	float degat;
 	degat = 5;
-
+  
 	int choix;
 
 	printf("\n");
@@ -31,6 +31,7 @@ int main()
 		srand(time(NULL));
     	int choixMonstre = rand()%3+1;    //entre 1-3
 
+    //Choix du joueur
 		scanf("%d", &choix);
 		printf("\n");
 
@@ -38,7 +39,6 @@ int main()
 		{
 			case 1 :
 				printf("Vous attaquez le monstre ! \n");
-
 				if (choixMonstre == 2)
 				{
 					printf("Le monstre se defend \n");		
@@ -53,19 +53,21 @@ int main()
 
 				printf("C'est super efficace ! \n");
 				}
+				vieMonstre = vieMonstre - degat;
 			break;
 
 			case 2 :
 				printf("Vous vous defendez ! \n \n");
-
 				if (choixMonstre == 1)
 				{
 					degat = degat / 4;
 					vie = vie - degat;
 					printf("Vous venez de perdre %1f points de vie \n \n", degat);
 				}
+				degat = degat / 4;
+				vie = vie - degat;
+				printf("Vous venez de perdre %df points de vie \n \n", degat);
 
-				
 			break;
 		}
 	}
