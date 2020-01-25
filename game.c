@@ -59,7 +59,7 @@ int main() {
 		
 
 		//Choix du joueur
-		printf("Attaquer [1] ou Se defendre [2] ou Lancer poison [3]\n \n");
+		printf("Attaquer [1] ou Se defendre [2] ou Lancer poison [3] ou Utiliser antidote [4] \n \n");
 
 		//Choix du monstre (Aléatoire)
     	int choixMonstre = rand()%3+1;    //entre 1-3
@@ -91,7 +91,7 @@ int main() {
 
 				if (choixMonstre == 1)
 				{
-					printf("Le monstre contre-attaque \n \n");
+					printf("Le montre contre-attaque \n \n");
 					vie = vie - degat;
 					printf("Aye ! Il vous touche gravement !\n \n");
 				}
@@ -224,6 +224,64 @@ int main() {
 				}
 				printf("Le monstre a subit %d degat d'empoisonnement \n \n", degatPoison);
 			break;
+
+				//Le joueur utilise un antidote
+			case 4 :
+				if (isPlayerPoison <= 0)
+				{
+					printf("Vous n'êtes pas empoisonné...\n \n");
+					printf("- - - - - - - - - - -\n \n");
+				}
+				else if(isPlayerPoison >= 1)
+				{
+					printf("Vous utiliser un antidote \n \n");
+					isPlayerPoison = 0;
+					printf("- - - - - - - - - - -\n \n");
+				}
+				
+				if (isPlayerPoison <= 0)
+				{
+					printf("Vous n'êtes plus empoisonné\n \n");
+				}
+
+					//Action du monstre
+				if (choixMonstre == 1)
+				{
+					printf("Le montre contre-attaque \n \n");
+					vie = vie - degat;
+					printf("Aye ! Il vous touche gravement !\n \n");
+				}
+
+				if (choixMonstre == 2)
+				{
+					printf("Le monstre se prépare à se defendre \n \n");
+				}
+
+				if (choixMonstre == 3)
+				{
+					if(pointMagieMonstre <= 0)
+					{
+						choixMonstre = rand()%2+1;
+
+						if (choixMonstre == 1)
+						{
+							printf("Le monstre contre-attaque \n \n");
+							vie = vie - degat;
+							printf("Aye ! Il vous touche gravement !\n \n");
+						}
+						else if(choixMonstre == 2)
+						{
+							printf("Le monstre se prépare à se defendre \n \n");						
+						}
+					}
+					else
+					{
+						printf("Le monstre lance un sort de poison \n \n");
+						pointMagieMonstre = pointMagieMonstre - 15;
+						isPlayerPoison = 1;
+					}
+				}
+			break;
 		}
 		
 		//Dégâts de poison / tour
@@ -239,7 +297,7 @@ int main() {
 		}
 
 		//Incrémentation des points de magie / tour
-		if (pointMagie <= 60)
+		if (pointMagie < 60)
 		{
 			pointMagie = pointMagie + 1;
 			if (pointMagie == 60)
