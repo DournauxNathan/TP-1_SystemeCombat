@@ -91,7 +91,7 @@ int main() {
 
 				if (choixMonstre == 1)
 				{
-					printf("Le montre contre-attaque \n \n");
+					printf("Le monstre contre-attaque \n \n");
 					vie = vie - degat;
 					printf("Aye ! Il vous touche gravement !\n \n");
 				}
