@@ -96,6 +96,7 @@ int main() {
 
 			/*Choix du barde: Buff Attaque[1] Buff Defense[2] Buff regen[3] */
 		choixBarde = rand()%3+1;
+		printf("Attaquer [1] ou Se defendre [2] ou Lancer poison [3] ou Utiliser antidote [4] \n \n");
 
 		//Choix du monstre (Aléatoire)
 			/*Choix du monstre: Attaquer[1] Se defendre[2] Poison[3] */
@@ -302,6 +303,7 @@ int main() {
 						if (choixMonstre == 1)
 						{
 							printf("Le montre contre-attaque \n \n");
+							printf("Le monstre contre-attaque \n \n");
 							vie = vie - degat;
 							printf("Aye ! Il vous touche gravement !\n \n");
 						}
