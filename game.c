@@ -2,45 +2,68 @@
 #include <stdlib.h>
 #include <time.h> //Ne pas oublier d'inclure le fichier time.h
 
-
 	/*TP: Systeme de combat //lien DropBox: http://bit.ly/35Q6ffC */
 
+//Structure: Alliés héros
+struct Personnage
+{
+	int vie;
+	int pointMagie;
+	int exp;
+};
+
+
+
+
 int main() {
-	int nTour;
-	nTour = 1;
+	int nTour = 1;
 
 	//Joueur
-	int vie;
-	vie = 100;
-
-	int pointMagie;
-	pointMagie = 60;
-
-	int exp;
-	exp = 0;
+	int vie = 100;
+	int pointMagie = 100;
+	int exp = 0;
 
 	int choix;
 
 	int isPlayerPoison;
 	isPlayerPoison = 0;
 
+	//Alliés
+	struct Personnage soigneur;
+	soigneur.vie = 100;
+	soigneur.pointMagie = 120;
+	soigneur.exp = 0;
+
+	int choixSoigneur;
+
+	struct Personnage mage;
+	mage.vie = 100;
+	mage.pointMagie = 150;
+	mage.exp = 0;
+
+	int choixMage;
+
+	struct Personnage barde;
+	barde.vie = 80;
+	barde.pointMagie = 110;
+	barde.exp = 0;
+
+	int choixBarde;
+
 	//Monstre
-	int vieMonstre;
-	vieMonstre = 250;
+	int vieMonstre = 250;
+	int pointMagieMonstre = 35;
 
-	int pointMagieMonstre;
-	pointMagieMonstre = 35;
-
+	int choixMonstre;
 	srand(time(NULL)); // initialisation de rand
 
 	int isMonstrePoison;
 	isMonstrePoison = 0;
 
-	float degat;
-	degat = 5;
+	float degat = 5;
 
-	int degatPoison;
-	degatPoison = 3;
+	int degatPoison = 3;
+
 
 	/*Début du jeu avec une phrase indicative*/
 	printf("\n");
@@ -51,19 +74,33 @@ int main() {
 		printf("Tour: %d \n", nTour);
         printf("__________________________\n \n");
         
-        printf("Heros: \n");
-		printf("PV: %d | PM: %d | EXP: %d \n \n", vie, pointMagie, exp);
+        printf("Vous:   | Soigneur: | Mage:   | Barde:  |       \n");
+		printf("PV: %d | PV: %d   | PV: %d | PV: %d  |         \n", vie, soigneur.vie, mage.vie, barde.vie);
+		printf("PM: %d | PM: %d   | PM: %d | PM: %d |          \n", pointMagie, soigneur.pointMagie, mage.pointMagie, barde.pointMagie);
+		printf("XP: %d   | XP: %d     | XP: %d   | XP: %d   |\n\n", exp, soigneur.exp, mage.exp, barde.exp);
 
 		printf("Monstre: \n");
 		printf("PV: %d \n \n", vieMonstre);
 		
-
 		//Choix du joueur
+		printf(" Attaquer      [1]  Se defendre       [2]  \n");
+		printf(" Lancer poison [3]  Utiliser antidote [4]\n\n");
+		printf("	    //Inventaire [5]//               \n\n");
+
+		//Choix des alliés
+			/*Choix du soigneur: Soins[1] Soins Cible[2] Soins Groupe[3] */
+		choixSoigneur = rand()%3+1;
+
+			/*Choix du mage: Boule de feu[1] Pics de glace[2] Paralysie[3] */
+		choixMage = rand()%3+1;
+
+			/*Choix du barde: Buff Attaque[1] Buff Defense[2] Buff regen[3] */
+		choixBarde = rand()%3+1;
 		printf("Attaquer [1] ou Se defendre [2] ou Lancer poison [3] ou Utiliser antidote [4] \n \n");
 
 		//Choix du monstre (Aléatoire)
-    	int choixMonstre = rand()%3+1;    //entre 1-3
-    	printf ("choixMonstre: %d \n \n", choixMonstre);
+			/*Choix du monstre: Attaquer[1] Se defendre[2] Poison[3] */
+    	choixMonstre = rand()%3+1;
 
 		printf("-> Votre choix: "); scanf("%d", &choix); 
 		printf("\n");
@@ -265,6 +302,7 @@ int main() {
 
 						if (choixMonstre == 1)
 						{
+							printf("Le montre contre-attaque \n \n");
 							printf("Le monstre contre-attaque \n \n");
 							vie = vie - degat;
 							printf("Aye ! Il vous touche gravement !\n \n");
